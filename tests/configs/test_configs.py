@@ -1,3 +1,4 @@
+import pytest
 from hydra_zen import launch, store, zen
 
 from numerlab.configs import TrainCfg
@@ -19,6 +20,7 @@ def mock(
     pass
 
 
+@pytest.mark.requires_data
 def test_train_config() -> None:
     store.add_to_hydra_store(overwrite_ok=True)
     launch(TrainCfg, zen(mock), version_base="1.3")
